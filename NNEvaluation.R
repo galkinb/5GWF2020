@@ -109,27 +109,13 @@ maxSINR = 10.45007
 #normalise the neural network input data (same was we did for the training)
 normaliseData = function(P,Int,Dist,h){
   
-  #normalise SINR
-  #foo=min(assSINR,SINR)
-  #assSINR=log10(assSINR/foo)
-  #SINR= log10(SINR/foo)  
-  
- # mnfoo=min(assSINR,SINR)
-#  mxfoo=max(assSINR,SINR)
-#  if(mxfoo>0){
-#    assSINR=(assSINR-mnfoo)/(mxfoo-mnfoo)
-#    SINR=(SINR-mnfoo)/(mxfoo-mnfoo)
-#  }
-  
   #normalise observed power
   foo=min(P)
-#  assP=log10(assP/foo)
   P= log10(P/foo)  
   
   mnfoo=min(P)
   mxfoo=max(P)
   if(mxfoo>0){
-#    assP=(assP-mnfoo)/(mxfoo-mnfoo)
     P=(P-mnfoo)/(mxfoo-mnfoo)
   }
   
@@ -137,32 +123,17 @@ normaliseData = function(P,Int,Dist,h){
   mnfoo=min(Int)
   mxfoo=max(Int)
   if(mxfoo>0){
-#    assInt=(assInt-mnfoo)/(mxfoo-mnfoo)
     Int=(Int-mnfoo)/(mxfoo-mnfoo)
   }
   
   mnfoo=min(Dist)
   mxfoo=max(Dist)
   if(mxfoo>0){
-  #  assDist=(assDist-mnfoo)/(mxfoo-mnfoo)
     Dist=(Dist-mnfoo)/(mxfoo-mnfoo)
   }
   
- # assLoad= assLoad/100
-#  Load=Load/100
- 
   h = h/300
 
-#  buildscale=buildscale/50
-#  BSh=BSh/50
-#  bw=bw/pi
- # currentSINR=max(0,log10(currentSINR)/maxSINR)
-  
- # test=c(Which==assWhich)
-  #Which[test]=1
- # Which[!test]=0
-  
-#  assWhich=1 
   
   return(c(P,Int,Dist,h))
 }
